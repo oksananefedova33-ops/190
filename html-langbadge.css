@@ -1,0 +1,256 @@
+/* Модалка выбора языков для HTML Preview */
+.html-langbadge-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  backdrop-filter: blur(4px);
+}
+
+.html-langbadge-modal {
+  background: #0f1622;
+  border: 1px solid #1f2b3b;
+  border-radius: 16px;
+  width: 90vw;
+  max-width: 500px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.html-langbadge-header {
+  padding: 20px;
+  border-bottom: 1px solid #1f2b3b;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.html-langbadge-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.html-langbadge-close {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid #2a3441;
+  background: #1a2533;
+  color: #9fb2c6;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  transition: all 0.2s;
+}
+
+.html-langbadge-close:hover {
+  background: #2a3441;
+  color: #ffffff;
+}
+
+.html-langbadge-body {
+  padding: 20px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.html-langbadge-section {
+  margin-bottom: 24px;
+}
+
+.html-langbadge-label {
+  display: block;
+  color: #9fb2c6;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.html-langbadge-color-input {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.html-langbadge-color-picker {
+  width: 60px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid #2a3441;
+  cursor: pointer;
+  background: #1a2533;
+}
+
+.html-langbadge-color-value {
+  flex: 1;
+  padding: 10px 14px;
+  background: #111925;
+  border: 1px solid #213247;
+  border-radius: 8px;
+  color: #e4eef9;
+  font-family: 'Monaco', monospace;
+  font-size: 13px;
+}
+
+.html-langbadge-langs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 12px;
+  background: #111925;
+  border: 1px solid #213247;
+  border-radius: 10px;
+}
+
+.html-langbadge-lang-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: #1a2533;
+  border: 1px solid #2a3441;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+  user-select: none;
+}
+
+.html-langbadge-lang-item:hover {
+  background: #2a3441;
+}
+
+.html-langbadge-lang-item.selected {
+  background: rgba(46, 168, 255, 0.15);
+  border-color: #2ea8ff;
+}
+
+.html-langbadge-lang-checkbox {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  border: 2px solid #4b5563;
+  background: #111925;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+
+.html-langbadge-lang-item.selected .html-langbadge-lang-checkbox {
+  background: #2ea8ff;
+  border-color: #2ea8ff;
+}
+
+.html-langbadge-lang-checkbox::after {
+  content: '✓';
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.2s;
+}
+
+.html-langbadge-lang-item.selected .html-langbadge-lang-checkbox::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.html-langbadge-lang-text {
+  color: #e4eef9;
+  font-size: 14px;
+}
+
+.html-langbadge-footer {
+  padding: 16px 20px;
+  border-top: 1px solid #1f2b3b;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.html-langbadge-select-all {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid #2a3441;
+  background: #1a2533;
+  color: #9fb2c6;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s;
+}
+
+.html-langbadge-select-all:hover {
+  background: #2a3441;
+  color: #e4eef9;
+}
+
+.html-langbadge-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.html-langbadge-btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 1px solid #2a3441;
+  background: #1a2533;
+  color: #e4eef9;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.html-langbadge-btn:hover {
+  background: #2a3441;
+}
+
+.html-langbadge-btn.primary {
+  background: #2ea8ff;
+  border-color: #1e98ef;
+  color: #fff;
+}
+
+.html-langbadge-btn.primary:hover {
+  background: #1e98ef;
+  box-shadow: 0 4px 12px rgba(46, 168, 255, 0.3);
+}
+
+.html-langbadge-btn.primary:disabled {
+  background: #4b5563;
+  border-color: #374151;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Скроллбар */
+.html-langbadge-langs-grid::-webkit-scrollbar {
+  width: 8px;
+}
+
+.html-langbadge-langs-grid::-webkit-scrollbar-track {
+  background: #0f172a;
+  border-radius: 4px;
+}
+
+.html-langbadge-langs-grid::-webkit-scrollbar-thumb {
+  background: #2a3f5f;
+  border-radius: 4px;
+}
+
+.html-langbadge-langs-grid::-webkit-scrollbar-thumb:hover {
+  background: #3a4f7f;
+}
